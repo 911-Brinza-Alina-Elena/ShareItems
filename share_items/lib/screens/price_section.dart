@@ -140,7 +140,9 @@ class _PriceSectionState extends State<PriceSection> {
                       },
                     );
                   },
+                  physics: ScrollPhysics(),
                   shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
                   padding: const EdgeInsets.all(10),
                 )
               ])));

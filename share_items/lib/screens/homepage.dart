@@ -89,7 +89,7 @@ class _HomepageState extends State<Homepage> {
                       MaterialPageRoute(builder: (context) => PriceSection()));
                 },
                 child: const Text('Price section')),
-            ItemNotification()
+            online ? ItemNotification() : Container(),
           ],
         ),
       ),

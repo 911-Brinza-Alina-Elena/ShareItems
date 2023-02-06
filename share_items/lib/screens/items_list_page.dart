@@ -164,7 +164,9 @@ class _ItemsListPageState extends State<ItemsListPage> {
                     );
                   }),
                   itemCount: items.length,
+                  physics: ScrollPhysics(),
                   shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
                   padding: const EdgeInsets.all(10),
                 ),
               ],

@@ -14,6 +14,7 @@ class ApiService {
   Future<List<String>> getCategories() async {
     logger.log(Level.info, 'getCategories');
     final response = await dio.get('$baseUrl/categories');
+    logger.log(Level.info, response.data);
     if (response.statusCode == 200) {
       final result = response.data as List;
       return result.map((e) => e.toString()).toList();
@@ -25,6 +26,7 @@ class ApiService {
   Future<List<Item>> getItemsByCategory(String category) async {
     logger.log(Level.info, 'getItemsByCategory');
     final response = await dio.get('$baseUrl/items/$category');
+    logger.log(Level.info, response.data);
     if (response.statusCode == 200) {
       final result = response.data as List;
       return result.map((e) => Item.fromJson(e)).toList();
@@ -36,6 +38,7 @@ class ApiService {
   Future<List<Item>> getDiscountedItems() async {
     logger.log(Level.info, 'getDiscountedItems');
     final response = await dio.get('$baseUrl/discounted');
+    logger.log(Level.info, response.data);
     if (response.statusCode == 200) {
       final result = response.data as List;
       var items = result.map((e) => Item.fromJson(e)).toList();
@@ -58,6 +61,7 @@ class ApiService {
     logger.log(Level.info, 'addItem: $item');
     final response =
         await dio.post('$baseUrl/item', data: item.toJsonWithoutId());
+    logger.log(Level.info, response.data);
     if (response.statusCode == 200) {
       return Item.fromJson(response.data);
     } else {
@@ -68,6 +72,7 @@ class ApiService {
   void deleteItem(int id) async {
     logger.log(Level.info, 'deleteItem: $id');
     final response = await dio.delete('$baseUrl/item/$id');
+    logger.log(Level.info, response.data);
     if (response.statusCode != 200) {
       throw Exception(response.statusMessage);
     }
@@ -77,6 +82,7 @@ class ApiService {
     logger.log(Level.info, 'updatePrice: $id, $price');
     final response =
         await dio.post('$baseUrl/price', data: {'id': id, 'price': price});
+    logger.log(Level.info, response.data);
     if (response.statusCode != 200) {
       throw Exception(response.statusMessage);
     }

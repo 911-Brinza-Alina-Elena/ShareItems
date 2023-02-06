@@ -132,7 +132,9 @@ class _MainSectionState extends State<MainSection> {
                     );
                   }),
                   itemCount: categories.length,
+                  physics: ScrollPhysics(),
                   shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
                   padding: const EdgeInsets.all(10),
                 ),
               ],
