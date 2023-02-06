@@ -54,7 +54,9 @@ class _HomepageState extends State<Homepage> {
       }
       logger.log(Level.info, "Connection status: $online, $newStatus");
       if (online != newStatus) {
-        online = newStatus;
+        setState(() {
+          online = newStatus;
+        });
         if (newStatus) {
           message(context, "Connection restored", "Info");
         } else {
@@ -89,7 +91,7 @@ class _HomepageState extends State<Homepage> {
                       MaterialPageRoute(builder: (context) => PriceSection()));
                 },
                 child: const Text('Price section')),
-            online ? ItemNotification() : Container(),
+            online ? ItemNotification() : const Text(''),
           ],
         ),
       ),
